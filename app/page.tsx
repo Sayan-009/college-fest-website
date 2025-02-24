@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import img from "@/public/images/img.png"
 import { Button } from "@/components/ui/button";
 import {
   Menubar,
@@ -172,11 +173,17 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-stone-700 flex flex-col items-center">
+    <div className="min-h-screen bg-stone-700 flex flex-col items-center w-full">
       {/* <TracingBeam className="px-10"> */}
 
       <FloatingNav navItems={navItems} />
-      <Menubar>
+
+      <div className="h-screen w-full m-0 p-0 border border-red-800">
+        <Image src={img} className="cover" alt="no image found"></Image>
+      </div>
+
+
+      {/* <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
           <MenubarContent>
@@ -190,7 +197,7 @@ export default function Home() {
             <MenubarItem>Print</MenubarItem>
           </MenubarContent>
         </MenubarMenu>
-      </Menubar>
+      </Menubar> */}
 
       <Timeline data={data} />
 
@@ -287,19 +294,19 @@ export default function Home() {
       </div>
 
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="[--duration:20s]">
-        {firstRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:20s]">
-        {secondRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
-        ))}
-      </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
-    </div>
+        <Marquee pauseOnHover className="[--duration:20s]">
+          {firstRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+        <Marquee reverse pauseOnHover className="[--duration:20s]">
+          {secondRow.map((review) => (
+            <ReviewCard key={review.username} {...review} />
+          ))}
+        </Marquee>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+      </div>
 
       {/* </TracingBeam> */}
     </div>
